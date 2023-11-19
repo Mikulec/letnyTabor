@@ -1,0 +1,15 @@
+<article>
+    <p>Preferovaný šport:</p>
+    <mat-radio-group>
+        <mat-radio-button 
+            *ngFor="let control of controls"             
+            (change)="onSelect(control)" 
+            [value]="control.key" 
+            [id]="control.key"
+        >
+            {{ control.label }}
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <ng-content select="mat-error"></ng-content>
+</article>  

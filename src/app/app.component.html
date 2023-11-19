@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Meno:</mat-label>
+    <input matInput type="text" id="name" formControlName="name">
+    <mat-error>{{ form.get('name') | formError }}</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Priezvisko:</mat-label>
+    <input matInput type="text" id="lastname" formControlName="lastname">
+    <mat-error>{{ form.get('lastname') | formError }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Vek:</mat-label>
+    <input matInput type="number" id="age" formControlName="age">
+    <mat-error>{{  form.get('age') | formError }}</mat-error>
+  </mat-form-field>
+
+  <mat-checkbox type="checkbox" id="alreadyWas" formControlName="alreadyWas">Dieťa sa už tábora zúčastnilo.</mat-checkbox>
+
+  <app-preferred-sport [controls]="appPreferedSportControlsModel" formControlName="appPreferedSport">
+    @if (appService.formSubmittedAsInvalid()) {
+      <mat-error>{{  form.get('appPreferedSport') | formError }}</mat-error>
+    }
+  </app-preferred-sport>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Poznámka:</mat-label>
+    <textarea matInput id="note" cols="64" rows = "5" formControlName="note"></textarea>
+    <mat-error>{{  form.get('note') | formError }}</mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit">Zapísať</button>
+  
+</form>
